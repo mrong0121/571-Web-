@@ -1,0 +1,105 @@
+function generateHtml(jsp) {
+  headerInfo = jsp.Mainline.Table.Header.Data;
+  html_text = "<html><head><title>Film Companies</title></head><body>";
+  html_text += "<table border='2'>";
+
+  //html_text+="<caption align='left'><h1>"+caption+"</h1></caption>";
+  html_text += "<tbody>";
+  html_text += "<tr>";
+  x = 200;
+  y = 120;
+  // output the headers
+  for (i = 0; i < headerInfo.length; i++) {
+    html_text += "<th>" + headerInfo[i] + "</th>";
+  }
+
+  html_text += "</tr>";
+  var container_info = jsonDoc.Mainline.Table.Row;
+  if (container_info) {
+    for (i = 0; i < container_info.length; i++) {
+      html_text += "<tr>"; //start a new row of the output table
+      var CompanyName = container_info[i].Title;
+      var HomePageURL = container_info[i].Year;
+      var HubsDetails = container_info[i].Hubs.Hub; // array of Hubs
+      var CompanyLogo = container_info[i].Gross;
+      var MarketPer = container_info[i].HomePage;
+      var shipNumber = container_info[i].Logo;
+
+      html_text += "<td>" + CompanyName + "</td>";
+      html_text += "<td>" + shipNumber + "</td>";
+
+      //hub numbers
+      html_text += "<td style='padding-top: 40px;'><ul>";
+      var count = 0;
+      if (HubsDetails) {
+        for (j = 0; j < HubsDetails.length; j++) {
+          if (HubsDetails[j]) {
+            if (count++ == 0) html_text += "<li><b>" + HubsDetails[j] + "</b></li>";
+            else html_text += "<li>" + HubsDetails[j] + "</li>";
+          }
+        }
+      }
+      html_text += "</ul></td>";
+      html_text += "<td>" + MarketPer + "</td>";
+      html_text += "<td> <a href=" + HomePageURL + ">" + HomePageURL + "</a></td>";
+      html_text += "<td><img src='" + CompanyLogo + "'width='" + x + "' height='" + y + "'></td>";
+
+      html_text += "</tr>";
+    }
+  }
+
+  html_text += "</tbody>";
+  html_text += "</table>";
+  html_text += "</body></html>";
+
+}
+
+
+
+var jsonDoc;
+var data;
+var url = formDetails.URL.value;
+
+function checkState(xml) {
+  if (xml.status == 200 && xml.readyState == 4) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function loadJSON(ur) {
+  var xmlhttp = new XMLHttpRequest();
+  var kk;
+  xmlhttp.overrideMimeType("application/json");
+  xmlhttp.open("GET", ur, false); //open, send, responseText are xmlhttp.send(); //properties of XMLHTTPRequest
+  try {
+    xmlhttp.send();
+  } catch (e) {
+    alert("Error: File does not exist!")
+    return;
+  }
+  if checkState(xmlhttp) == true {
+    kk = xmlhttp.responseText;
+    return kk;
+  } else {
+    alert("File is not available!");
+    return;
+  }
+}
+
+function parseJson(jsd) {
+  var dat
+  try {
+    dat = JSON.parse(jsd);
+    return dat;
+  } catch (e) {
+    alert("Pasre fail!");
+    return;
+  }
+}
+
+data = parseJson(jsonDoc);
+htmltxt = generateHtml(data);
+hWin = window.open("", "Assignment4", "height=800,width=1000");
+hWin.document.write(htmltxt);

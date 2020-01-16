@@ -1,0 +1,225 @@
+#formdiv{
+    background-color:#212429;
+    margin: 0 auto;
+    color: white;
+}
+
+#subformdiv{
+}
+#clearbut{
+    margin-left: 30px;
+}
+
+#pdtitle{
+    line-height: 100px;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+#submitbut{
+    text-align: center;
+}
+#clearbut{
+    text-align: center;
+}
+
+.material-icons{
+    vertical-align: middle;
+}
+.form-group.required .col-form-label:after {
+    content:"*";
+    color:red;
+}
+
+#myForm input.ng-invalid.ng-touched {
+    border-color: #dc3545;
+}
+.kong{
+    height: 30px;
+}
+.kongs{
+    height: 10px;
+}
+#resultbut{
+    background-color: #333641;
+    border: none;
+}
+
+#facebookbut{
+
+}
+.wishlistbut{
+    border:none;
+    with:40px;
+    background-color: #f8f9fa;
+}
+.rightpos{
+    text-align: right;
+    float:right;
+}
+
+
+.alignright{
+    text-align: right;
+}
+
+#errordiv{
+    background-color: #fdf3d1;
+    border:2px solid #fdefc3;
+    color: #cca218;
+    height: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin:0 auto;
+}
+#error2div{
+    background-color: #fdf3d1;
+    border:2px solid #fdefc3;
+    color: #cca218;
+    height: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin:0 auto;
+}
+#error3div{
+    background-color: #fdf3d1;
+    border:2px solid #fdefc3;
+    color: #cca218;
+    height: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin:0 auto;
+}
+#paginationdiv{
+    margin:0 auto !important;
+    text-align: center !important;
+}
+
+ul.pagination li > a {
+    border: none !important;
+    font-weight: bolder;
+    color: black;
+    font-size: smaller;
+}
+.pagination li :disabled{
+    color: grey;
+}
+.pagination li :hover{
+     background-color: black;
+     color: white;
+ }
+.pagination{
+    width:max-content;
+    margin:0 auto !important;
+    text-align: center !important;
+}
+.pagination > .active > a{
+    background-color: black !important;
+    color: white !important;
+}
+.itemsimage{
+    width: 100px;
+    height: 100px;
+}
+.detailbut{
+    border: none;
+    background-color: #e1e2e4;
+}
+.detailbutdiv{
+    text-align: right;
+}
+#listbut{
+    border: none;
+    background-color: #f8f9fa;
+}
+#titlediv{
+    text-align: center;
+}
+#resultsdiv{
+    background-color: white;
+}
+#resultsdiv.container{
+    background-color: white;
+}
+
+/* not active */
+/*.nav-pills nav-link:not(.active) {*/
+    /*background-color: white;*/
+    /*color: black;*/
+    /*font-weight: bolder;*/
+/*}*/
+/*.nav-pills nav-link:active {*/
+    /*background-color:#333641 ;*/
+    /*color: white;*/
+/*}*/
+
+.nav-tabs>a:not(.active){
+    background-color: white;
+    color: black;
+}
+.nav-tabs>a:active{
+    background-color: #333641;
+    color: white;
+}
+.nav-tabs>.active>a{
+    background-color: #333641;
+    color: white;
+}
+.nav-tabs .nav-link.active, .nav-tabs .show>.nav-link{
+    background-color: #333641 !important;
+    color: white !important;
+}
+.nav-tabs>a:not(.active) {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border-top:transparent !important;
+    border-left:transparent !important;
+    border-right:transparent !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/*.nav-tabs {*/
+    /*border-bottom:none !important;*/
+/*}*/
+.imagediv{
+    border:8px solid black;
+    margin:4px 4px 4px 4px;
+}
+#photokuang{
+    text-align: center;
+}
+#itemphotoserror{
+    background-color: #fdf3d1;
+    border:2px solid #fdefc3;
+    color: #cca218;
+    height: 35px;
+    font-weight: bold;
+    text-align: center;
+    margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

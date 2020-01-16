@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>homework4</title>
+  <script type="text/javascript">
+    function alerterror(k) {
+      if (k == 1) {
+        alert("Error: Please enter filename!");
+      }
+      if (k == 2) {
+        alert("Error: Wrong url, file does not exist!");
+      }
+      if (k == 4) {
+        alert("Error: Empty file!");
+      }
+    }
+
+    function fucinfo(film_info) {
+      var htxt = '';
+      if (film_info.length) {
+        for (j = 0; j < film_info.length; j++) {
+          if (film_info[j].length != 0 && j == 0) {
+            htxt += "<li><b>" + film_info[j] + "</b></li>";
+          } else {
+            htxt += "<li>" + film_info[j] + "</li>";
+          }
+        }
+      }
+      return htxt;
+    }
+
+    function writehtml(mm) {
+      var hhtxt = '';
+      hhtxt += "<td white-space: nowrap;>" + mm.Title + "</td>";
+      hhtxt += "<td white-space: nowrap;>" + mm.Year + "</td>";
+      hhtxt += "<td><ul>";
+      if (mm.Hubs.Hub) {
+        infotxt = fucinfo(mm.Hubs.Hub);
+      }
+      hhtxt += infotxt;
+      hhtxt += "</ul></td>";
+      hhtxt += "<td white-space: nowrap;>" + mm.Gross + "</td>";
+      hhtxt += "<td style=width:38%;> <a href=" + mm.HomePage + ">" + mm.HomePage + "</a></td>";
+      hhtxt += "<td><img src='" + mm.Logo + "'width='" + "100px" + "'></td></tr>";
+alert(hhtxt);
+      return hhtxt;
+      
+    }
+
+    function openwin(txt) {
+      hWin = window.open("", "Highest-grossing films", "height=800,width=1200");
+      hWin.document.write(txt);
+    }
+
+    function exhtml() {
+      var url = document.getElementById("inputurl").value;
+      if (url == '' || url == undefined || url == null) {
+        alerterror(1);
+        return;
+      }
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.overrideMimeType("application/json");
+      var jsonDoc;
+      var data;
+      xmlhttp.open("GET", url, false);
+      try {
+        xmlhttp.send();
+      } catch (e) {
+        alerterror(2);
+        return;
+      }
+      if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+        jsonDoc = xmlhttp.responseText;
+      } else {
+        alerterror(2);
+        return;
+      }
+      try {
+        data = JSON.parse(jsonDoc);
+      } catch (e) {
+        alert(e.message);
+        return;
+      }
+      tablehead = data.Mainline.Table.Header.Data;
+      var htmltxt = "<html><head><title>Highest-grossing films</title></head><body><table border='2'><tr>"
+      for (i = 0; i < tablehead.length; i++) {
+        htmltxt += "<th>" + tablehead[i] + "</th>";
+      }
+      htmltxt += "</tr>";
+      var content = data.Mainline.Table.Row;
+      if (content) {
+        for (i = 0; i < content.length; i++) {
+          hmtxt = writehtml(content[i]);
+          htmltxt += hmtxt;
+        }
+      } else {
+        alerterror(4);
+        return;
+      }
+      openwin(htmltxt);
+    }
+  </script>
+
+  <style type="text/css">
+    .content {
+      position: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .blank {
+      height: 20px;
+    }
+
+    .titlefont {
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .input {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="titlefont"> Enter URL for Highest-grossing films List JSON File
+      </div>
+      <div class="blank"></div>
+      <form name="myform" method="POST">
+        <div class="input">
+          <input type="text" id="inputurl" value=''>
+        </div>
+        <div class="blank"></div>
+        <div class="input">
+          <input type="button" onClick="exhtml()" value="Submit Query">
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>

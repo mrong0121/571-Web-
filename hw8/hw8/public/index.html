@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="stylesheets/index.css">
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.14/angular-material.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-touch.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js"></script>
+    <script src="https://cdn.gitcdn.link/cdn/angular/bower-material/v1.1.14/angular-material.js"></script>
+
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.8/roundProgress.min.js"></script>
+    <!--<script src="https//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.6/angular-sanitize.js"></script>
+    <script src="javascripts/ui-bootstrap-tpls-3.0.6.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.8/roundProgress.min.js"></script>
+
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+
+    <script src="javascripts/index.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework8</title>
+    <script>
+    </script>
+</head>
+<body>
+
+<div class="container" name="formdiv" id = "formdiv">
+    <div id="pdtitle">Product Search</div>
+    <div class="col-md-12 offset-md-2">
+        <form id="myForm" name="myForm" class="kk" method="get" novalidate>
+            <div id="subformdiv">
+                <div class="form-group row required">
+                    <label for="keyword" class="col-md-2 col-form-label required">Keyword</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control needs-validation" ng-model="keyword" name="keyword" id="keyword" placeholder="Enter Product Name (eg. iphone 8)" required pattern="[a-zA-Z0-9\s]*">
+                        <span ng-show="myForm.keyword.$touched && myForm.keyword.$error.required" style="color: red">
+                            <div class="invalid-feedback" id="for_keyword" style="display:unset;">
+                                Please enter a keyword.
+                            </div>
+                        </span>
+                        <span ng-show="myForm.keyword.$touched && myForm.keyword.$error.pattern" style="color: red">
+                            <div class="invalid-feedback" style="display:unset;">
+                                Invalid keyword.
+                            </div>
+                         </span>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="category" class="col-md-2 col-form-label" >Category</label>
+                    <div class="col-md-5">
+                        <select class="form-control col-md-5" id="category">
+                            <option>All Categories</option>
+                            <option>Art</option>
+                            <option>Baby</option>
+                            <option>Books</option>
+                            <option>Clothing, Shoes & Accessories</option>
+                            <option>Computers/Tablets & Networking</option>
+                            <option>Health & Beauty</option>
+                            <option>Music</option>
+                            <option>Video Games & Consoles</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="condition" class="col-md-2 col-form-label">Condition</label>
+                    <div class="col-md-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="condition" id="new" value="New" type="checkbox">
+                            <label class="form-check-label" for="con1" >New</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="condition" id="used" value="Used" type="checkbox">
+                            <label class="form-check-label" for="con2" >Used</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="condition" id="unspecified" value="Unspecified" type="checkbox">
+                            <label class="form-check-label" for="con3" >Unspecified</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="shippingoption" class="col-md-2 col-form-label">Condition</label>
+                    <div class="col-md-6">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="localpickup" type="checkbox" value="LocalPickup">
+                            <label class="form-check-label" for="ship1" >Local Pickup</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="freeshipping" type="checkbox" value="FreeShipping">
+                            <label class="form-check-label" for="ship2" >Free Shipping</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="distance" class="col-md-2 col-form-label">Distance (Miles)</label>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control col-md-5" id="distance" placeholder="10" >
+                    </div>
+                </div>
+                <div class="form-group required">
+                    <div class="row">
+                        <label for="from" class="col-md-2 col-form-label required">From</label>
+                        <div class="col-md-6">
+                            <div class="form-check" ng-init="form.location=true">
+                                <input class="form-check-input" type="radio" name="location" id="currentlocation" ng-model="form.location" ng-value="true" checked>
+                                <label class="form-check-label" for="currentlocation">Current Location</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="location" id="other" ng-model="form.location" ng-value="false">
+                                <label class="form-check-label" for="other">Other. Please specify zip code:</label>
+                            </div>
+                            <div class="kongs"></div>
+                            <div >
+                                <input type="text" class="form-control" name="zipcode" id="zipcode" ng-model="zipcode" pattern="\d{5}"  ng-required="!formlocation && !ng-disabled" disabled>
+                                <span id="ziperrorspan" ng-show="myForm.zipcode.$touched && myForm.zipcode.$error.required" style="color: red">
+                                    <div class="invalid-feedback" id="for_zipcode" style="display:unset;">
+                                        Please enter a zipcode.
+                                    </div>
+                                </span>
+                            </div>
+                            <!--<div ng-controller="DemoCtrl as ctrl" ng-cloak="">-->
+                                <!--<md-content >-->
+                                    <!--<md-autocomplete ng-required = "!ng-disabled"-->
+                                                     <!--ng-disabled="true"-->
+                                                     <!--md-input-name="zipcode"-->
+                                                     <!--md-input-id="zipcode"-->
+                                                     <!--md-no-cache="ctrl.noCache"-->
+                                                     <!--md-selected-item="ctrl.selectedItem"-->
+                                                     <!--md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"-->
+                                                     <!--md-search-text="ctrl.searchText"-->
+                                                     <!--md-selected-item-change="ctrl.selectedItemChange(item)"-->
+                                                     <!--md-items="item in ctrl.querySearch(ctrl.searchText)"-->
+                                                     <!--md-item-text="item.display"-->
+                                                     <!--md-dropdown-position="bottom"-->
+                                                     <!--md-clear-button="false"-->
+                                                     <!--md-min-length="3">-->
+                                        <!--<md-item-template>-->
+                                            <!--<span id="zzipcode" md-highlight-text="ctrl.searchText">{{item.display}}</span>-->
+                                        <!--</md-item-template>-->
+                                        <!--<md-not-found>-->
+                                        <!--</md-not-found>-->
+                                    <!--</md-autocomplete>-->
+                                <!--</md-content>-->
+                                <!--<span id="ziperrorspan" style="color: red">-->
+                                    <!--<div ng-show="myForm.zipcode.$touched && myForm.zipcode.$error.required" class="invalid-feedback" style="display:unset;" id="for_zip">-->
+                                        <!--Please enter a zipcode.-->
+                                    <!--</div>-->
+                                <!--</span>-->
+                                <!--<span id="ziperrorspan" ng-show="myForm.zipcode.$touched && myForm.zipcode.$error.pattern" style="color: red">-->
+                                    <!--<div class="invalid-feedback" style="display:unset;">-->
+                                        <!--Invalid zip.-->
+                                    <!--</div>-->
+                                <!--</span>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                <div class="kong"></div>
+
+                <button type="submit" name="submitbut" id="submitbut" ng-disabled="myForm.keyword.$invalid || (!form.location && myForm.zipcode.$invalid)"><i class="material-icons">search</i>Search</button>
+                <button type="button" name="clearbut" onclick="clickClear()" id="clearbut"><i class="material-icons">clear_all</i>Clear</button>
+            </div>
+        </form>
+        <div class="kongs"></div>
+    </div>
+
+
+
+</div>
+<div class="kong"></div>
+<div ng-controller="detailctrl" id="totaldiv">
+<div>
+    <div class="d-flex justify-content-center">
+        <nav class="nav nav-tabs justify-content-end" class="smooth_transition" role="tablist" >
+            <a class="nav-item nav-link active" id="resulttab" role="tab" data-toggle="pill" ng-click="setwish()" class="smooth_transition" href="#resultdiv">Results</a>
+            <a class="nav-item nav-link" id="wishlisttab" role="tab" ng-click="getWishlist()" data-toggle="pill" class="smooth_transition" href="#wishlistdiv">Wish List</a>
+        <!--<button type="button" class="btn btn-primary" id="resultbut">Results</button>-->
+        <!--<button type="button" class="btn btn-link" id="wishlistbut">Wish list</button>-->
+        </nav>
+    </div>
+    <div class="kongs"></div>
+    <div id="progressdiv">
+        <div class="progress" id="progress" hidden>
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="kong"></div>
+<div class="tab-content" class="smooth_transition">
+<div id="wishlistdiv" role="tabpanel" class="container tab-pane fade" class="smooth_transition">
+    <div class="detailbutdiv">
+        <button type="button" ng-disabled="!canhavedetail" ng-click="clickdetail2()" class="detailbut">Detail   &rsaquo;&nbsp;&nbsp;</button>
+        <div class="kong"></div>
+    </div>
+    <table class="table table-dark" ng-if="haswish">
+        <thead><th>#</th><th>Image</th><th>Title</th><th>Price</th><th>Shipping</th><th>Seller</th><th></th></thead>
+        <tbody >
+            <tr ng-repeat="wishitem in wishitems">
+                <td>{{wishitem.number}}</td>
+                <td><div style="width: 100px;height: 100px;"><img style="max-width: 100%;max-height: 100%;" src="{{wishitem.image}}"></div></td>
+                <td><a href='#' data-toggle='tooltip' data-placement='bottom' title="{{wishitem.title}}" ng-click="clicktitle2(wishitem.id)">{{wishitem.titlefin}}...</a></td>
+                <td>{{wishitem.price}}</td>
+                <td>{{wishitem.shipping}}</td>
+                <td>{{wishitem.seller}}</td>
+                <td><button  ng-click="changewish(wishitem.index,wishitem.number)" ><i class="material-icons" ng-style='changecolor(wishitem.icon)'>{{wishitem.icon}}</i></button></td>
+            </tr>
+            <tr><td></td><td></td><td></td><td></td><td></td><td>Total Shopping</td><td>${{ttprice}}</td></tr>
+        </tbody>
+    </table>
+    <div id='error3div' ng-if="!haswish">No Records</div>
+</div>
+
+
+
+<div id="resultdiv" role="tabpanel" class="container tab-pane active" class="smooth_transition">
+<div class="container" id="resultsdiv">
+    <div id="searchitemsdiv">
+        <div id="errdiv"></div>
+        <div class="detailbutdiv">
+            <button type="button" ng-disabled="!canhavedetail" ng-click="clickdetail()" class="detailbut">Detail   &rsaquo;&nbsp;&nbsp;</button>
+            <div class="kong"></div>
+        </div>
+        <div id="resulttablediv" class="table-responsive" ng-model="resulttab" ng-click="hsachange()">
+            <div id="resulttable"></div>
+        </div>
+        <div ng-controller="PaginationDemoCtrl" id="paginationdiv" ng-cloak>
+            <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" previous-text="&laquo;    Previous" next-text="Next    &raquo;"></ul>
+        <!--<pre>The selected page no: {{currentPage}}</pre>-->
+            <div class="kong"></div>
+        </div>
+    </div>
+    <div id="detaildiv"  class="smooth_transition">
+        <div id="titlediv"></div>
+        <div class="kongs"></div>
+        <div id="butarea">
+            <button  id="listbut" ng-click="clicklist()">&nbsp;&nbsp;&lsaquo;    list</button>
+            <span class="rightpos">
+                <a target="_blank" href="" id="facebookbut"><img ng-click="clickfacebook()" src="http://csci571.com/hw/hw8/Images/facebook.png" style="width:40px;"></a>
+                <button class="wishlistbut" ng-if="showwish" ng-click="addtowish()"><i class="material-icons">add_shopping_cart</i></button>
+                <button class="wishlistbut" ng-if="!showwish" ng-click="removefromwish()"><i class="material-icons" style="color: #b1872f">remove_shopping_cart</i></button>
+            </span>
+        </div>
+        <div class="kong"></div>
+        <div id="navdiv">
+            <nav class="nav nav-tabs justify-content-end" class="smooth_transition" role="tablist" >
+                <a class="nav-item nav-link active" class="smooth_transition" id="itdd" role="tab" data-toggle="pill" href="#itemdetailtable">Product</a>
+                <a class="nav-item nav-link" class="smooth_transition" id="itphoto" role="tab" data-toggle="pill" href="#photosdiv">Photos</a>
+                <a class="nav-item nav-link" class="smooth_transition" id="itshipping" role="tab" data-toggle="pill" href="#shippingdiv">Shipping</a>
+                <a class="nav-item nav-link" class="smooth_transition" id="itseller" ng-click="clickseller()" role="tab" data-toggle="pill" href="#sellerdiv">Seller</a>
+                <a class="nav-item nav-link" class="smooth_transition" id="itsimilar" ng-click="clicksimilar()" role="tab" data-toggle="pill" href="#similardiv">Similar Products</a>
+            </nav>
+        </div>
+        <div id="kkkkkk"></div>
+        <!--<div class="modal fade" id="myModal" role="dialog">-->
+            <!--<div class="modal-dialog">-->
+                <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+                <!--<div class="modal-content">-->
+                    <!--<div class="modal-header">-->
+                        <!--<h4 class="modal-title">Modal Header</h4>-->
+                        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                    <!--</div>-->
+                    <!--<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false" >-->
+                        <!--<div class="kong"></div>-->
+                        <!--<div class="carousel-inner">-->
+                            <!--<div>123{{linkphotos}}321</div>-->
+                            <!--<div class="carousel-item" ng-repeat="itimage in linkphotos">-->
+                                <!--<img class="d-block w-100" src="itimage" alt="">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
+                            <!--<span style="background-color: black" class="carousel-control-prev-icon" aria-hidden="true"></span>-->
+                            <!--<span class="sr-only">Previous</span>-->
+                        <!--</a>-->
+                        <!--<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">-->
+                            <!--<span style="background-color: black" class="carousel-control-next-icon" aria-hidden="true"></span>-->
+                            <!--<span class="sr-only">Next</span>-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="kong"></div>-->
+                    <!--<div class="modal-footer">-->
+                        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="tab-content" id="tabcontentdiv">
+            <div id="itemdetailtable" role="tabpanel" class="container tab-pane active">
+            </div>
+            <div id="photosdiv" role="tabpanel" class="container tab-pane fade">
+                <div id="photokuang">
+                    <div class="container-fluid">
+                        <div class="d-flex flex-row flex-wrap justify-content-center">
+                            <div class="d-flex flex-column">
+                                <a href="#"><img src="" class="imagediv" id="pic1" alt="" style="width:300px;height:auto;" onclick="openPic(this);"></a>
+                                <a href="#"><img src="" class="imagediv" id="pic4" alt="" style="width: 300px;height:auto;" onclick="openPic(this);"></a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#"><img src="" class="imagediv" id="pic2" alt="" style="width:300px;height:auto;" onclick="openPic(this);"></a>
+                                <a href="#"><img src="" class="imagediv" id="pic5" alt="" style="width: 300px;height:auto;" onclick="openPic(this);"></a>
+                                <a href="#"><img src="" class="imagediv" id="pic7" alt="" style="width:300px;height:auto;" onclick="openPic(this);"></a>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <a href="#"><img src="" class="imagediv" id="pic3" alt="" style="width:300px;height:auto;" onclick="openPic(this);"></a>
+                                <a href="#"><img src="" class="imagediv" id="pic6" alt="" style="width:300px;height:auto;" onclick="openPic(this);"></a>
+                                <a href="#"><img src="" class="imagediv" id="pic8" alt="" style="width:300px;height:auto;" onclick="openPic(this);"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="itemphotoserror">No Records</div>
+            </div>
+
+            <div id="shippingdiv" role="tabpanel" class="container tab-pane fade">shipping</div>
+            <div id="sellerdiv" role="tabpanel" class="container tab-pane fade">
+                <table class='table table-striped table-dark'>
+                    <tr ng-if="selleritems.storename" style="text-align: center;font-weight: bold;font-size: large;"><th colspan="2">{{selleritems.storename}}</th></tr>
+                    <tr ng-if="selleritems.feedbackscore">
+                        <td><b>Feedback Score</b></td>
+                        <td>{{selleritems.feedbackscore}}</td>
+                    </tr>
+                    <tr ng-if="selleritems.positivefeedbackpercent">
+                        <td><b>Popularity</b></td>
+                        <td>
+                                <round-progress
+                                    max="100"
+                                    current="selleritems.positivefeedbackpercent"
+                                    color='green'
+                                    bgcolor='white'
+                                    radius='20'
+                                    stroke='2'
+                                    semi='false'
+                                    rounded='true'
+                                    clockwise='false'
+                                    responsive='false'>
+                                </round-progress>
+                            <div style="color:white;margin-top: -30px;margin-left: 5px">{{selleritems.positivefeedbackpercent}}</div>
+                            <!--<span style="color: white">{{selleritems.positivefeedbackpercent}}</span>-->
+                        </td>
+                    </tr>
+                    <tr ng-if="selleritems.feedbackscore>=10000">
+                        <td><b>Feedback Rating Star</b></td>
+                        <td><i class="material-icons" style="color:{{selleritems.feedbackratingstar}}">stars</i></td>
+                    </tr>
+                    <tr ng-if="!(selleritems.feedbackscore>=10000)">
+                        <td><b>Feedback Rating Star</b></td>
+                        <td><i class="material-icons" style='color:{{selleritems.feedbackratingstar}}'>star_border</i></td>
+                    </tr>
+                    <tr ng-if="selleritems.topratedseller=='true'">
+                        <td><b>Top rated</b></td>
+                        <td><i class="material-icons" style='color: green'>check</i></td>
+                    </tr>
+                    <tr ng-if="(selleritems.topratedseller=='false')">
+                        <td><b>Top rated</b></td>
+                        <td><i class="material-icons" style='color: red'>close</i></td>
+                    </tr>
+                    <tr ng-if="selleritems.storename">
+                        <td><b>Store Name</b></td>
+                        <td>{{selleritems.storename}}</td>
+                    </tr>
+                    <tr ng-if="selleritems.storeurl">
+                        <td><b>Buy Product At</b></td>
+                        <td><a target='_blank' href="#" style='color: green' ng-click="openStore()">Store</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="similardiv" role="tabpanel"  class="container tab-pane fade">
+                <div id="similartable">
+                    <div ng-if="showtable">
+                    <div class="kong"></div>
+                    <div class="row">
+                        <select id="orderByattr" ng-model="orderByattr" ng-options="orderitem.name for orderitem in orderitems track by orderitem.value">
+                        </select>
+                        <span>&nbsp;&nbsp;&nbsp;</span>
+                        <select id="orderByad" ng-model="orderByad" ng-disabled="orderByattr.value=='default'" ng-options="orderitem2.name for orderitem2 in orderitems2 track by orderitem2.value">
+                        </select>
+                    </div>
+                    <div class="kong"></div>
+                    <table class="table table-dark">
+                        <tr ng-repeat="it in simitems|orderBy:orderByad.value+orderByattr.value| limitTo: limitnumber" style="border-bottom: 10px solid white">
+                            <td><div style="width: 100px;height: 100px;"><img style="max-width:100%; max-height: 100%;" src="{{it.photo}}"></div></td>
+                            <td>
+                                <div style="color: #669195;font-weight: bolder; "><a style="color: #669195;" href="{{it.viewitemurl}}" target="_blank">{{it.title}}</a></div>
+                                <div style="color: #a9d495;font-weight: bolder;">Price: ${{it.sprice}}</div>
+                                <div style="color: #d0ae5e;font-weight: bolder;">Shipping Cost: ${{it.sshippingcost}}</div>
+                                <div style="color: white;font-weight: bolder;">Days Left: {{it.timeleft}}</div>
+                            </td>
+                        </tr>
+                    </table>
+                        <div style="text-align: center;">
+                            <button id="showmorebut" ng-if="!showmore && hasmore" ng-click="clickshowmore()" style="background-color: black; color: white;" >Show More</button>
+                            <button id="showlessbut" ng-if="showmore && hasmore" ng-click="clickshowless()" style="background-color: black; color: white;" >Show Less</button>
+                        </div>
+                    </div>
+                    <div class="kongs"></div>
+                    <div id='error2div' ng-if="!showtable">No Records</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

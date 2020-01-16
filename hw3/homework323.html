@@ -1,0 +1,318 @@
+<html>
+<head>
+  <title>Homework3</title>
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    @font-face {
+      font-family: proxima-nova2;
+      src: url("proxima_nova_reg.ttf");
+    }
+
+    @font-face {
+      font-family: futura-pt;
+      src: url("FuturaPTHeavy.otf");
+    }
+
+    @font-face {
+      font-family: futura-pt2;
+      src: url("FuturaPTBook.otf");
+    }
+
+    .arrow {
+      border-top: 1.5px solid;
+      border-right: 1.5px solid;
+      width: 17px;
+      height: 17px;
+      border-color: white;
+      transform: rotate(135deg);
+      margin-left: 390px;
+      margin-top: 90px;
+    }
+
+    .back {
+      margin: auto;
+      padding: 0;
+      width: 800px;
+      position: relative;
+      perspective: 1px;
+      transform-style: preserve-3d;
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    .backimage1 {
+      width: 1090px;
+      margin-left: -135px;
+      padding: 0;
+    }
+
+    .backimage2 {
+      width: 1200px;
+      padding: 0;
+      margin-left: -200px;
+    }
+
+    .content {
+      padding: 0;
+      margin: auto;
+      left: 0;
+      width: 800px;
+      height: 100%;
+      position: absolute;
+      top: -5px;
+      transform: translate3d(0, 0, 0.5px) scale(0.5);
+    }
+
+    .word {
+      height: 65px;
+    }
+
+    .word1 {
+      text-align: center;
+      margin-top: 15px;
+      line-height: 65px;
+      margin-left: 65px;
+      font-size: 23px;
+      font-family: futura-pt;
+      letter-spacing: 4px;
+      font-weight: bold;
+      font-style: normal;
+      color: white;
+      display: inline-block;
+    }
+
+    .kkk {
+      display: inline-block;
+      line-height: 5px;
+      margin-left: 20px;
+    }
+
+    .word2 {
+      width: 100%;
+      font-family: futura-pt2;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      color: white;
+    }
+
+    .word3 {
+      text-align: center;
+      margin-top: 120px;
+      font-size: 73px;
+      font-family: futura-pt;
+      line-height: 1;
+      font-style: normal;
+      color: white;
+    }
+
+    .word4 {
+      text-align: center;
+      margin-top: 50px;
+      font-family: proxima-nova2;
+      color: white;
+      letter-spacing: 1px;
+      line-height: 27px;
+      font-size: 16px;
+    }
+
+    .but {
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .butt {
+      border: none;
+      text-align: center;
+      font-style: futura-pt;
+      background-color: white;
+      font-weight: 600;
+      width: 113px;
+      height: 42px;
+      color: black;
+      font-size: 10px;
+    }
+
+    .layer {
+      margin-top: 15px;
+      background-color: white;
+      border: 1px solid transparent;
+    }
+
+    .layer1 {
+      margin-top: 60px;
+      background-color: white;
+      width: 100%;
+      height: 300px;
+      margin-left: 60px;
+      overflow: hidden;
+    }
+
+    .layer2 {
+      margin-top: 15px;
+      margin-left: 60px;
+      background-color: white;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .picc1 {
+      overflow: hidden;
+      width: 330px;
+      height: 380px;
+      display: inline-block;
+    }
+
+    .pic1 {
+      margin-left: -40px;
+    }
+
+    .picc2 {
+      width: 330px;
+      margin-left: 10px;
+      height: 380px;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .pic2 {
+      margin-left: -25px;
+    }
+
+    .picc3 {
+      width: 330px;
+      height: 400px;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .pic3 {
+      margin-left: -15px;
+    }
+
+    .picc4 {
+      width: 330px;
+      height: 400px;
+      margin-left: 10px;
+      overflow: hidden;
+      display: inline-block;
+    }
+
+    .pic4 {
+      margin-left: -30px;
+    }
+
+    .textlayer {
+      background-color: white;
+      width: 800px;
+      overflow: hidden;
+      height: 160px;
+    }
+
+    .text1 {
+      text-align: left;
+      font-family: proxima-nova2;
+      margin-left: 250px;
+      margin-top: 20px;
+      color: grey;
+      font-size: 10px;
+    }
+
+    .textlayer2 {
+      width: 800px;
+      height: auto;
+    }
+
+    .text2 {
+      text-align: center;
+      font-family: proxima-nova2;
+      margin-top: 300px;
+      color: white;
+      font-size: 15px;
+    }
+
+    .kong {
+      background-color: white;
+      width: 800px;
+      overflow: hidden;
+      height: 130px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="back">
+    <img class="backimage1" src="http://csci571.com/hw/hw3/images/snow1.jpg">
+    <img class="backimage2" src="http://csci571.com/hw/hw3/images/snow6.jpg">
+    <div class="content">
+      <div class="word">
+        <div class="word1">SNOWBOARD&ensp;CENTRAL</div>
+        <div class="kkk">
+          <div class="word2">&nbsp;&ensp;&ensp;HOME&nbsp;&ensp;&ensp;ABOUT&nbsp;&ensp;&ensp;GALLERY&nbsp;&ensp;&ensp;JOURNAL&nbsp;&ensp;&ensp;CONTACT <br>&ensp;
+          </div>
+        </div>
+      </div>
+      <div class="word3">Bend the<br> Mind</div>
+      <div class="word4">James Jantz is a snowboarder living in Jackson Hole, WY<br>
+        and riding around the world. Lorem ipsum dolor sit amet<br>
+        consectetuer adipiscing elit nam nibh. Nunc varius facilisis<br>
+        eros sed erat in in velit quis arcu ornare laoreet.
+      </div>
+      <div class="but">
+        <button class="butt" type="button">LEARN&ensp;MORE</button>
+      </div>
+      <div class="arrow"></div>
+      <div class="layer">
+        <div class="layer1">
+          <div class="picc1">
+            <div class="pic1">
+              <img class="pic1" src="http://csci571.com/hw/hw3/images/snow2.jpg" style="width:450px">
+            </div>
+          </div>
+          <div class="picc2">
+            <div class="pic2">
+              <img class="pic2" src="http://csci571.com/hw/hw3/images/snow3.jpg" style="width:450px">
+            </div>
+          </div>
+        </div>
+        <div class="layer2">
+          <div class="picc3">
+            <div class="pic3">
+              <img class="pic3" src="http://csci571.com/hw/hw3/images/snow4.jpg" style="width:430px">
+            </div>
+          </div>
+          <div class="picc4">
+            <div class="pic4">
+              <img class="pic4" src="http://csci571.com/hw/hw3/images/snow5.jpg" style="width:430px">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="textlayer">
+        <div class="text1">Lorem ipsum dolor sit amet consectetuer adipiscing elit nam nibh. Nunc varius<br>
+          facilisis eros sed erat in in velit quis arcu ornare laoreet. Curabitur adipiscing luctus<br>
+          massa. Integer ut purus ac augue commodo. Nunc nec mi eu justo tempor <br>
+          consectetuer. Etiam vitae nisl. In dignissim lacus ut ante. <br>
+          <br>Photography courtesy of Carl Sutter.
+        </div>
+      </div>
+      <div class="textlayer2">
+        <div class="text2">Lorem ipsum dolor sit amet consectetuer adipiscing elit nam <br>
+          nibh. Nunc varius facilisis eros sed erat in in velit quis arcu <br>
+          ornare laoreet.
+        </div>
+      </div>
+    </div>
+    <div class="kong">
+
+    </div>
+  </div>
+
+</body>
+
+</html>

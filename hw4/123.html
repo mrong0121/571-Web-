@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>homework4</title>
+  <script type="text/javascript">
+    function exhtml() {
+      var url = document.getElementById("inputurl").value;
+      if (url == '' || url == undefined || url == null) {
+        alert("Please enter filename!")
+        return;
+      }
+      var xmlhttp = new XMLHttpRequest();
+      var jsonDoc;
+      var data;
+      xmlhttp.overrideMimeType("application/json");
+      xmlhttp.open("GET", url, false); //open, send, responseText are xmlhttp.send(); //properties of XMLHTTPRequest
+      try {
+        xmlhttp.send();
+        //alert("send success");
+      } catch (e) {
+        alert("Error: File does not exist!");
+        return;
+      }
+      if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
+        jsonDoc = xmlhttp.responseText;
+        //alert("success jsonDoc");
+      }
+      try {
+        data = JSON.parse(jsonDoc);
+        //alert("success parse");
+      } catch (e) {
+        alert("Pasre fail!");
+        return;
+      }
+      tablehead = data.Mainline.Table.Header.Data;
+      htmltxt = "<html><head><title>Highest-grossing films</title></head><body><table border='2'>"
+      htmltxt += "<tr>";
+      for (i = 0; i < tablehead.length; i++) {
+        htmltxt += "<th>" + tablehead[i] + "</th>";
+      }
+      htmltxt += "</tr>";
+      var content = data.Mainline.Table.Row;
+      if (content) {
+        for (i = 0; i < content.length; i++) {
+          var film_title = content[i].Title;
+          var film_year = content[i].Year;
+          var film_info = content[i].Hubs.Hub;
+          var film_gross = content[i].Gross;
+          var film_homepage = content[i].HomePage;
+          var film_logo = content[i].Logo;
+          htmltxt += "<td width='5%'>" + film_title + "</td>";
+          htmltxt += "<td>" + film_year + "</td>";
+          htmltxt += "<td style='padding-top: 20px'; width='30%';><ul>";
+          flag = 0;
+          if (film_info) {
+            for (j = 0; j < film_info.length; j++) {
+              if (film_info[j]) {
+                if (flag == 0) {
+                  htmltxt += "<li><b>" + film_info[j] + "</b></li>";
+                  flag = 1;
+                } else {
+                  htmltxt += "<li>" + film_info[j] + "</li>";
+                }
+              }
+            }
+          }
+          htmltxt += "</ul></td>";
+          htmltxt += "<td>" + film_gross + "</td>";
+          htmltxt += "<td> <a href=" + film_homepage + ">" + film_homepage + "</a></td>";
+          htmltxt += "<td><img src='" + film_logo + "'width='" + "100px" + "' height='" + "160px" + "'></td>";
+          htmltxt += "</tr>";
+        }
+      } else {
+        alert("Empty file!");
+        return;
+      }
+      hWin = window.open("", "Highest-grossing films", "height=800,width=1200");
+      hWin.document.write(htmltxt);
+    }
+  </script>
+
+  <style type="text/css">
+    .content {
+      position: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .blank {
+      height: 20px;
+    }
+
+    .titlefont {
+      font-size: larger;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .input {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="blank"></div>
+      <div class="titlefont"> Enter URL for Highest-grossing films List JSON File
+      </div>
+      <div class="blank"></div>
+      <div class="input">
+        <input type="text" id="inputurl" value=''>
+      </div>
+      <div class="blank"></div>
+      <div class="input">
+        <input input type="button" onClick="exhtml()" value="Submit Query">
+      </div>
+    </div>
+</body>
+
+</html>
